@@ -20,6 +20,7 @@ public class Plywak extends Zawodnik {
 
     //walidacja enum poźniej
     public void setKoronnyStyl(StylPlywacki koronnyStyl) {
+        if(koronnyStyl == null) throw new IllegalArgumentException("Koronny styl nie moze byc pusty.");
         this.koronnyStyl = koronnyStyl;
     }
 }
