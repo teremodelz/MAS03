@@ -4,6 +4,7 @@ public class Tenisista extends Zawodnik {
         super(imie, nazwisko, wiek);
         if(rankingAtp<=0) throw new IllegalArgumentException("Pozycja w rankingu atp nie może być mniejsza albo równa zero.");
         this.rankingAtp = rankingAtp;
+        Repozytorium.getInstance().dodajZawodnika(this);
     }
 
     @Override

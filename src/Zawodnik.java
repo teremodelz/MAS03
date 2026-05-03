@@ -1,4 +1,6 @@
-public abstract class Zawodnik {
+import java.io.Serializable;
+
+public abstract class Zawodnik implements Serializable {
     private String imie;
     private String nazwisko;
     private int wiek;
@@ -37,5 +39,9 @@ public abstract class Zawodnik {
     public void setWiek(int wiek) {
         if(wiek<0) throw new IllegalArgumentException("Zły argument w metodzie setWiek. Wiek nie może być mniejszy od zera.");
         this.wiek = wiek;
+    }
+
+    public void usun() {
+        Repozytorium.getInstance().usunZawodnika(this);
     }
 }

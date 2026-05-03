@@ -1,7 +1,9 @@
+import java.io.Serializable;
 import java.util.EnumSet;
+import java.util.Set;
 
 enum SprawaType {Sadowa, Aktywna, Zawieszona, Zakonczona}
-public class SprawaSadowa implements IAktywna, IZawieszona, IZakonczona {
+public class SprawaSadowa implements IAktywna, IZawieszona, IZakonczona, Serializable {
     private String sygnatura;
     private String opisZarzutow;
     //aktywna
@@ -25,6 +27,7 @@ public class SprawaSadowa implements IAktywna, IZawieszona, IZakonczona {
         SprawaSadowa s = new SprawaSadowa(sygnatura, opisZarzutow,
                 EnumSet.of(SprawaType.Sadowa, SprawaType.Aktywna));
         s.sedziaProwadzacy = sedziaProwadzacy;
+        Repozytorium.getInstance().dodajSprawa(s);
         return s;
     }
 
@@ -33,6 +36,7 @@ public class SprawaSadowa implements IAktywna, IZawieszona, IZakonczona {
         SprawaSadowa s = new SprawaSadowa(sygnatura, opisZarzutow,
                 EnumSet.of(SprawaType.Sadowa, SprawaType.Zawieszona));
         s.powodZawieszenia = powodZawieszenia;
+        Repozytorium.getInstance().dodajSprawa(s);
         return s;
     }
 
@@ -41,6 +45,7 @@ public class SprawaSadowa implements IAktywna, IZawieszona, IZakonczona {
         SprawaSadowa s = new SprawaSadowa(sygnatura, opisZarzutow,
                 EnumSet.of(SprawaType.Sadowa, SprawaType.Zakonczona));
         s.wynikSprawy = wynikSprawy;
+        Repozytorium.getInstance().dodajSprawa(s);
         return s;
     }
 
@@ -152,6 +157,10 @@ public class SprawaSadowa implements IAktywna, IZawieszona, IZakonczona {
 
         this.powodZawieszenia = null;
         rodzajSprawy.remove(SprawaType.Zawieszona);
+    }
+
+    public void usun() {
+        Repozytorium.getInstance().usunSprawa(this);
     }
 
 }

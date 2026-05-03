@@ -1,3 +1,5 @@
+import java.io.Serializable;
+
 public class Drukarka extends Urzadzenie implements IDrukarka {
     private double poziomTuszu;
     private boolean czyKolor;

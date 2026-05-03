@@ -1,3 +1,5 @@
+import java.io.Serializable;
+
 public class Kopiarka extends Skaner implements IDrukarka {
     private double poziomTuszu;
     private boolean czyKolor;

@@ -1,9 +1,12 @@
+import java.io.Serializable;
+
 public class Plywak extends Zawodnik {
     private StylPlywacki koronnyStyl;
 
     public Plywak(String imie, String nazwisko, int wiek, StylPlywacki koronnyStyl){
         super(imie, nazwisko, wiek);
         this.koronnyStyl = koronnyStyl;
+        Repozytorium.getInstance().dodajZawodnika(this);
     }
     @Override
     public String trenuj() {

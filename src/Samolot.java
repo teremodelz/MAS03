@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.EnumSet;
 
 enum SamolotType {Regionalny, Sredniodystansowy, Dlugodystansowy, Samolot}
-public class Samolot implements IRegionalny, ISredniodystansowy, IDlugodystansowy{
+public class Samolot implements IRegionalny, ISredniodystansowy, IDlugodystansowy, Serializable {
     private String nazwa;
     private String producent;
     private int liczbaMiejsc;
@@ -36,6 +37,7 @@ public class Samolot implements IRegionalny, ISredniodystansowy, IDlugodystansow
         Samolot s = new Samolot(nazwa, producent, liczbaMiejsc, zasieg,
                 EnumSet.of(SamolotType.Samolot, SamolotType.Regionalny));
         s.czyWymagaPasaAsfaltowego = czyWymagaPasaAsflatowego;
+        Repozytorium.getInstance().dodajSamolot(s);
         return s;
     }
 
@@ -47,6 +49,7 @@ public class Samolot implements IRegionalny, ISredniodystansowy, IDlugodystansow
                 EnumSet.of(SamolotType.Samolot, SamolotType.Sredniodystansowy));
         s.liczbaKlasPokladowych = liczbaKlasPokladowych;
         s.zuzyciePaliwaNa100Km = zuzyciePaliwaNa100Km;
+        Repozytorium.getInstance().dodajSamolot(s);
         return s;
     }
 
@@ -58,6 +61,7 @@ public class Samolot implements IRegionalny, ISredniodystansowy, IDlugodystansow
                 EnumSet.of(SamolotType.Samolot, SamolotType.Dlugodystansowy));
         s.liczbaPokladow = liczbaPokladow;
         s.maksymalnaIloscGodzinLotu = maksymalnaIloscGodzinLotu;
+        Repozytorium.getInstance().dodajSamolot(s);
         return s;
     }
 
@@ -77,6 +81,7 @@ public class Samolot implements IRegionalny, ISredniodystansowy, IDlugodystansow
         s.czyWymagaPasaAsfaltowego = czyWymagaPasa;
         s.liczbaKlasPokladowych = liczbaKlasPokladowych;
         s.zuzyciePaliwaNa100Km = zuzyciePaliwaNa100Km;
+        Repozytorium.getInstance().dodajSamolot(s);
         return s;
     }
 
@@ -96,6 +101,7 @@ public class Samolot implements IRegionalny, ISredniodystansowy, IDlugodystansow
         s.czyWymagaPasaAsfaltowego = czyWymagaPasa;
         s.liczbaPokladow = liczbaPokladow;
         s.maksymalnaIloscGodzinLotu = maksymalnaIloscGodzinLotu;
+        Repozytorium.getInstance().dodajSamolot(s);
         return s;
     }
 
@@ -121,6 +127,7 @@ public class Samolot implements IRegionalny, ISredniodystansowy, IDlugodystansow
         s.zuzyciePaliwaNa100Km = zuzyciePaliwaNa100Km;
         s.liczbaPokladow = liczbaPokladow;
         s.maksymalnaIloscGodzinLotu = maksymalnaIloscGodzinLotu;
+        Repozytorium.getInstance().dodajSamolot(s);
         return s;
     }
 
@@ -142,6 +149,7 @@ public class Samolot implements IRegionalny, ISredniodystansowy, IDlugodystansow
         s.zuzyciePaliwaNa100Km = zuzyciePaliwaNa100Km;
         s.liczbaPokladow = liczbaPokladow;
         s.maksymalnaIloscGodzinLotu = maksymalnaIloscGodzinLotu;
+        Repozytorium.getInstance().dodajSamolot(s);
         return s;
     }
 
@@ -242,5 +250,9 @@ public class Samolot implements IRegionalny, ISredniodystansowy, IDlugodystansow
             System.out.println("Samolot dlugodystansowy startuje. Liczba pokladow: "
                     + liczbaPokladow + ". Maksymalna ilosc godzin lotu: " + maksymalnaIloscGodzinLotu + "h.");
         }
+    }
+
+    public void usun() {
+        Repozytorium.getInstance().usunSamolot(this);
     }
 }

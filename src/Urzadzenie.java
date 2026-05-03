@@ -25,4 +25,8 @@ public abstract class Urzadzenie {
     public String getInfo() {
         return "Urządzenie: " + nazwa + ", Producent: " + producent;
     }
+
+    public void usun() {
+        Repozytorium.getInstance().usunUrzadzenie(this);
+    }
 }

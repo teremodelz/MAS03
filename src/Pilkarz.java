@@ -1,3 +1,5 @@
+import java.io.Serializable;
+
 public class Pilkarz extends Zawodnik {
     private int numerKoszulki;
     private String klub;
@@ -8,12 +10,13 @@ public class Pilkarz extends Zawodnik {
         if(klub == null || klub.isBlank()) throw new IllegalArgumentException("Klub nie może być blank albo null.");
         this.numerKoszulki = numerKoszulki;
         this.klub = klub;
+        Repozytorium.getInstance().dodajZawodnika(this);
     }
 
     @Override
     public String trenuj() {
-        return "Piłkarz "+super.getImie()+" "+super.getNazwisko()+" o numerze koszulki "+numerKoszulki
-                +" z klubu " + klub +" rozpoczął trening.";
+        return "Pilkarz "+super.getImie()+" "+super.getNazwisko()+" o numerze koszulki "+numerKoszulki
+                +" z klubu " + klub +" rozpoczał trening.";
     }
 
     public int getNumerKoszulki() {
